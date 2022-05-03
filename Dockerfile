@@ -18,5 +18,6 @@ RUN echo '/usr/sbin/sshd -D' >>/luo.sh
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
 RUN echo root:uncleluo|chpasswd
 RUN chmod 755 /luo.sh
+RUN -ti --cap-add SYS_ADMIN --device /dev/fuse  root/dev:sshfs /bin/bash
 EXPOSE 80
 CMD  /luo.sh
